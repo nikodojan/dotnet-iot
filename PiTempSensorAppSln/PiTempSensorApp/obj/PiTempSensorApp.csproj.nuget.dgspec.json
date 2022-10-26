@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\_source\\IoT\\PiTempSensorAppSln\\PiTempSensorApp\\PiTempSensorApp.csproj": {}
+    "D:\\_source\\DotNetIoT\\PiTempSensorAppSln\\PiTempSensorApp\\PiTempSensorApp.csproj": {}
   },
   "projects": {
-    "D:\\_source\\IoT\\PiTempSensorAppSln\\PiTempSensorApp\\PiTempSensorApp.csproj": {
+    "D:\\_source\\DotNetIoT\\PiTempSensorAppSln\\PiTempSensorApp\\PiTempSensorApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\_source\\IoT\\PiTempSensorAppSln\\PiTempSensorApp\\PiTempSensorApp.csproj",
+        "projectUniqueName": "D:\\_source\\DotNetIoT\\PiTempSensorAppSln\\PiTempSensorApp\\PiTempSensorApp.csproj",
         "projectName": "PiTempSensorApp",
-        "projectPath": "D:\\_source\\IoT\\PiTempSensorAppSln\\PiTempSensorApp\\PiTempSensorApp.csproj",
+        "projectPath": "D:\\_source\\DotNetIoT\\PiTempSensorAppSln\\PiTempSensorApp\\PiTempSensorApp.csproj",
         "packagesPath": "C:\\Users\\nikod\\.nuget\\packages\\",
-        "outputPath": "D:\\_source\\IoT\\PiTempSensorAppSln\\PiTempSensorApp\\obj\\",
+        "outputPath": "D:\\_source\\DotNetIoT\\PiTempSensorAppSln\\PiTempSensorApp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

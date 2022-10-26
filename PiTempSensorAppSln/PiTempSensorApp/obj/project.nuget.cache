@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "IRk8Vuay+74TfMcGfjgRSFtXI3yrG+s0Yck9EQSyrSyR3CLEz7RNzuDWqE06QxRWlSRKTbaXu5sO9lrlD+dTFQ==",
+  "dgSpecHash": "KwnPxTjJTNz2rP9cdZRKJO0B72KU+ALEEVoMFuyJmVHXkYttDQ8n+oXdChvbQzyUqyEyGfWikTnvI4U+WmA5uw==",
   "success": true,
-  "projectFilePath": "D:\\_source\\IoT\\PiTempSensorAppSln\\PiTempSensorApp\\PiTempSensorApp.csproj",
+  "projectFilePath": "D:\\_source\\DotNetIoT\\PiTempSensorAppSln\\PiTempSensorApp\\PiTempSensorApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\nikod\\.nuget\\packages\\dnsclient\\1.6.1\\dnsclient.1.6.1.nupkg.sha512",
     "C:\\Users\\nikod\\.nuget\\packages\\iot.device.bindings\\2.2.0\\iot.device.bindings.2.2.0.nupkg.sha512",
