@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using PiTempSensorApp.Models;
 
-namespace PiTempSensorApp;
+namespace PiTempSensorApp.Services;
 
 internal interface IDataService
 {

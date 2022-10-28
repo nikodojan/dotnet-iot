@@ -1,26 +1,19 @@
-﻿using PiTempSensorApp;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using PiTempSensorApp.MongoDb;
+using Microsoft.Extensions.Hosting;
+using PiTempSensorApp;
+using PiTempSensorApp.Services;
 
-SensorReader sensorReader = new SensorReader();
-IDataService dataService = new MongoDbService();
-double temperature = 100;
-double humidity = 110;
-int temperatureTolerance = 1;
-int humidityTolerance = 5;
-
-while (true)
-{
-    var data = sensorReader.ReadData();
-    if (data.Temperature == null || data.Humidity == null)
-        continue;
-
-    if (temperature - data.Temperature >= temperatureTolerance || temperature - data.Temperature <= -1*temperatureTolerance || humidity - data.Humidity >= humidityTolerance || humidity - data.Humidity <= -1*humidityTolerance)
+var host = Host.CreateDefaultBuilder(args)
+    .ConfigureAppConfiguration(builder =>
     {
-        temperature = (double)data.Temperature;
-        humidity = (double)data.Humidity;
-        Console.WriteLine($"temp: {temperature} °C\r\nhum: {humidity} %");
-        dataService.PostAsync(data);
-    }
-    
-    Thread.Sleep(1000);
-}
+        builder.AddJsonFile("appsettings.json");
+    })
+    .ConfigureServices(services =>
+    {
+        services.AddSingleton<IWorker, Worker>();
+    })
+    .Build();
+
+

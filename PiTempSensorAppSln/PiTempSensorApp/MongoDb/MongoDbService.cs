@@ -1,5 +1,6 @@
 ﻿using MongoDB.Driver;
 using PiTempSensorApp.Models;
+using PiTempSensorApp.Services;
 
 namespace PiTempSensorApp.MongoDb
 {
