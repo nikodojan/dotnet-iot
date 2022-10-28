@@ -9,5 +9,5 @@ namespace PiTempSensorApp.Services;
 
 internal interface IDataService
 {
-    Task PostAsync(EnvironmentData data);
+    Task SendAsync(EnvironmentData data);
 }

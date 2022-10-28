@@ -1,8 +1,8 @@
-﻿using MongoDB.Driver;
+﻿using Microsoft.Extensions.Configuration;
+using MongoDB.Driver;
 using PiTempSensorApp.Models;
-using PiTempSensorApp.Services;
 
-namespace PiTempSensorApp.MongoDb
+namespace PiTempSensorApp.Services
 {
     internal class MongoDbService : IDataService
     {
@@ -10,15 +10,16 @@ namespace PiTempSensorApp.MongoDb
         private IMongoDatabase? _database;
         private IMongoCollection<EnvironmentData> _collection;
 
-        public MongoDbService()
+        public MongoDbService(IConfiguration config)
         {
-            var settings = MongoClientSettings.FromConnectionString("mongodb+srv://nikod:mongodbpassword@cluster0.qfirq.mongodb.net/?retryWrites=true&w=majority");
+            var settings = MongoClientSettings.FromConnectionString(config.GetConnectionString("MongoDb"));
             settings.ServerApi = new ServerApi(ServerApiVersion.V1);
             var client = new MongoClient(settings);
             _database = client.GetDatabase("MeasurementsDB");
             _collection = _database.GetCollection<EnvironmentData>("Measurements");
         }
-        public async Task PostAsync(EnvironmentData data)
+
+        public async Task SendAsync(EnvironmentData data)
         {
             await _collection.InsertOneAsync(data);
         }
