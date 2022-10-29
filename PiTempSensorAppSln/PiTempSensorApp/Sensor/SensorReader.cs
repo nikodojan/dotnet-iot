@@ -2,10 +2,10 @@
 using PiTempSensorApp.Models;
 
 namespace PiTempSensorApp.Sensor;
-internal class SensorReader
+internal class Dht22SensorReader : ISensorReader
 {
     private Dht22 _dht;
-    public SensorReader()
+    public Dht22SensorReader()
     {
         _dht = new Dht22(7, System.Device.Gpio.PinNumberingScheme.Board);
     }

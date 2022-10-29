@@ -6,7 +6,6 @@ namespace PiTempSensorApp.Services
 {
     internal class MongoDbService : IDataService
     {
-        private const string ConnectionString = "";
         private IMongoDatabase? _database;
         private IMongoCollection<EnvironmentData> _collection;
 

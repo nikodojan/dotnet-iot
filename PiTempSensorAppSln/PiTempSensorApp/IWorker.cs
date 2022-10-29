@@ -2,5 +2,5 @@
 
 internal interface IWorker
 {
-    void Run();
+    Task Run();
 }

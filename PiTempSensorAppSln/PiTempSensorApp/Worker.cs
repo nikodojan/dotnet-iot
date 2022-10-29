@@ -5,55 +5,79 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using PiTempSensorApp.Models;
 using PiTempSensorApp.Sensor;
 using PiTempSensorApp.Services;
 
-namespace PiTempSensorApp
+namespace PiTempSensorApp;
+
+internal class Worker : IWorker
 {
-    internal class Worker : IWorker
+    private readonly ISensorReader _sensorReader;
+    double _oldTemperature = 100;
+    double _oldHumidity = 110;
+    private readonly int _temperatureTolerance = 1;
+    private readonly int _humidityTolerance = 5;
+    private readonly IEnumerable<IDataService> _dataServices;
+    private readonly ILogger<Worker> _logger;
+
+    public Worker(IConfiguration config, IServiceProvider services, ILogger<Worker> logger)
     {
-        SensorReader _sensorReader;
-        double _temperature = 100;
-        double _humidity = 110;
-        int _temperatureTolerance = 1;
-        int _humidityTolerance = 5;
-        private IEnumerable<IDataService> _services;
+        _dataServices = services.GetServices<IDataService>();
+        _temperatureTolerance = config.GetValue<int>("Tolerances:TemperatureTolerance");
+        _humidityTolerance = config.GetValue<int>("Tolerances:HumidityTolerance");
+        _logger = logger;
+        _sensorReader = new Dht22SensorReader();
+    }
 
-        public Worker(IConfiguration config, IServiceProvider services)
+    public async Task Run()
+    {
+        while (true)
         {
-            _services = services.GetServices<IDataService>();
-            _temperatureTolerance = config.GetValue<int>("Tolerances:TemperatureTolerance");
-            _humidityTolerance = config.GetValue<int>("Tolerances:HumidityTolerance");
-            _sensorReader = new SensorReader();
-        }
-
-        public void Run()
-        {
-            while (true)
+            try
             {
                 var data = _sensorReader.ReadData();
                 if (data.Temperature == null || data.Humidity == null)
                     continue;
 
-                if (_temperature - data.Temperature >= _temperatureTolerance || _temperature - data.Temperature <= -1 * _temperatureTolerance || _humidity - data.Humidity >= _humidityTolerance || _humidity - data.Humidity <= -1 * _humidityTolerance)
+                if (DataHasChanged(data))
                 {
-                    _temperature = (double)data.Temperature;
-                    _humidity = (double)data.Humidity;
-                    Console.WriteLine($"temp: {_temperature} °C\r\nhum: {_humidity} %");
-                    SendData(data);
+                    SetOldValues(data);
+                    Console.WriteLine($"temp: {_oldTemperature} °C\r\nhum: {_oldHumidity} %");
+                    await SendData(data);
                 }
 
                 Thread.Sleep(1000);
             }
-        }
-
-        private async Task SendData(EnvironmentData data)
-        {
-            foreach (var dataService in _services)
+            catch (Exception e)
             {
-               await dataService.SendAsync(data);
+                _logger.LogError(e.ToString());
+                throw;
             }
+
+        }
+    }
+
+    private void SetOldValues(EnvironmentData data)
+    {
+        _oldTemperature = data.Temperature ?? _oldTemperature;
+        _oldHumidity = data.Humidity ?? _oldHumidity;
+    }
+
+    private bool DataHasChanged(EnvironmentData data)
+    {
+        return _oldTemperature - data.Temperature >= _temperatureTolerance ||
+               _oldTemperature - data.Temperature <= -1 * _temperatureTolerance ||
+               _oldHumidity - data.Humidity >= _humidityTolerance ||
+               _oldHumidity - data.Humidity <= -1 * _humidityTolerance;
+    }
+
+    private async Task SendData(EnvironmentData data)
+    {
+        foreach (var dataService in _dataServices)
+        {
+            await dataService.SendAsync(data);
         }
     }
 }

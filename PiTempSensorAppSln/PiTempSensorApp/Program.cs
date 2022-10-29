@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using PiTempSensorApp;
 using PiTempSensorApp.Services;
 
@@ -12,12 +13,14 @@ var host = Host.CreateDefaultBuilder(args)
     })
     .ConfigureServices((hostBuilder, services) =>
     {
+        services.AddLogging(loggingBuilder=>loggingBuilder.AddConsole());
         ConfigureDataServices(hostBuilder.Configuration, services);
         services.AddSingleton<IWorker, Worker>();
     })
     .Build();
 
-
+var logger = host.Services.GetRequiredService<ILogger<Program>>();
+logger.LogInformation("App started");
 var worker = host.Services.GetRequiredService<IWorker>();
 worker.Run();
 
