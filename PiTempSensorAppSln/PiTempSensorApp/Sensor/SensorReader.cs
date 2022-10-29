@@ -1,7 +1,7 @@
 ﻿using Iot.Device.DHTxx;
-using PiTempSensorApp.Models;
+using PiTempSensorApp.Reader.Models;
 
-namespace PiTempSensorApp.Sensor;
+namespace PiTempSensorApp.Reader.Sensor;
 internal class Dht22SensorReader : ISensorReader
 {
     private Dht22 _dht;

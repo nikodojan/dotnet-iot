@@ -4,7 +4,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using PiTempSensorApp;
-using PiTempSensorApp.Services;
+using PiTempSensorApp.Reader;
+using PiTempSensorApp.Reader.Services;
 
 var host = Host.CreateDefaultBuilder(args)
     .ConfigureAppConfiguration(builder =>

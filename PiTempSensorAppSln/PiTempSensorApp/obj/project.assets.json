@@ -2538,9 +2538,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\_source\\DotNetIoT\\PiTempSensorAppSln\\PiTempSensorApp\\PiTempSensorApp.csproj",
-      "projectName": "PiTempSensorApp",
-      "projectPath": "D:\\_source\\DotNetIoT\\PiTempSensorAppSln\\PiTempSensorApp\\PiTempSensorApp.csproj",
+      "projectUniqueName": "D:\\_source\\DotNetIoT\\PiTempSensorAppSln\\PiTempSensorApp\\PiTempSensorApp.Reader.csproj",
+      "projectName": "PiTempSensorApp.Reader",
+      "projectPath": "D:\\_source\\DotNetIoT\\PiTempSensorAppSln\\PiTempSensorApp\\PiTempSensorApp.Reader.csproj",
       "packagesPath": "C:\\Users\\nikod\\.nuget\\packages\\",
       "outputPath": "D:\\_source\\DotNetIoT\\PiTempSensorAppSln\\PiTempSensorApp\\obj\\",
       "projectStyle": "PackageReference",

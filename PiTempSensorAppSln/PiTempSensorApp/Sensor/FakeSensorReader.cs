@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using PiTempSensorApp.Models;
+﻿using PiTempSensorApp.Reader.Models;
 
-namespace PiTempSensorApp.Sensor
+namespace PiTempSensorApp.Reader.Sensor
 {
     internal class FakeSensorReader : ISensorReader
     {

@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using PiTempSensorApp.Models;
-using PiTempSensorApp.Sensor;
-using PiTempSensorApp.Services;
+using PiTempSensorApp.Reader.Models;
+using PiTempSensorApp.Reader.Sensor;
+using PiTempSensorApp.Reader.Services;
 
-namespace PiTempSensorApp;
+namespace PiTempSensorApp.Reader;
 
 internal class Worker : IWorker
 {

@@ -1,4 +1,4 @@
-﻿namespace PiTempSensorApp;
+﻿namespace PiTempSensorApp.Reader;
 
 internal interface IWorker
 {

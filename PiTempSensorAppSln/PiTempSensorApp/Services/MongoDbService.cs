@@ -1,8 +1,8 @@
 ﻿using Microsoft.Extensions.Configuration;
 using MongoDB.Driver;
-using PiTempSensorApp.Models;
+using PiTempSensorApp.Reader.Models;
 
-namespace PiTempSensorApp.Services
+namespace PiTempSensorApp.Reader.Services
 {
     internal class MongoDbService : IDataService
     {
