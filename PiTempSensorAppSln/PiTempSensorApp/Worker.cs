@@ -17,13 +17,17 @@ internal class Worker : IWorker
     private readonly IEnumerable<IDataService> _dataServices;
     private readonly ILogger<Worker> _logger;
 
-    public Worker(IConfiguration config, IServiceProvider services, ILogger<Worker> logger)
+    public Worker(
+        IConfiguration config, 
+        IServiceProvider services, 
+        ILogger<Worker> logger, 
+        ISensorReader sensorReader)
     {
         _dataServices = services.GetServices<IDataService>();
         _temperatureTolerance = config.GetValue<int>("Tolerances:TemperatureTolerance");
         _humidityTolerance = config.GetValue<int>("Tolerances:HumidityTolerance");
         _logger = logger;
-        _sensorReader = new Dht22SensorReader();
+        _sensorReader = sensorReader;
     }
 
     public async Task Run()

@@ -5,6 +5,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using PiTempSensorApp;
 using PiTempSensorApp.Reader;
+using PiTempSensorApp.Reader.Sensor;
 using PiTempSensorApp.Reader.Services;
 
 var host = Host.CreateDefaultBuilder(args)
@@ -16,6 +17,7 @@ var host = Host.CreateDefaultBuilder(args)
     {
         services.AddLogging(loggingBuilder=>loggingBuilder.AddConsole());
         ConfigureDataServices(hostBuilder.Configuration, services);
+        services.AddTransient<ISensorReader, Dht22SensorReader>();
         services.AddSingleton<IWorker, Worker>();
     })
     .Build();
