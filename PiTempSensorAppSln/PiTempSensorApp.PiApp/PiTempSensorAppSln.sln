@@ -5,7 +5,9 @@ VisualStudioVersion = 17.3.32922.545
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PiTempSensorApp.Reader", "PiTempSensorApp\PiTempSensorApp.Reader.csproj", "{E5064C58-7016-4913-B475-E76F0DD1BFDA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PiTempSensorApp.Reader.Tests", "PiTempSensorApp.Tests\PiTempSensorApp.Reader.Tests.csproj", "{9DC7A910-B41D-4AB1-BB0D-49EDD61408B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PiTempSensorApp.Reader.Tests", "PiTempSensorApp.Tests\PiTempSensorApp.Reader.Tests.csproj", "{9DC7A910-B41D-4AB1-BB0D-49EDD61408B0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PiTempSensorApp.Reader.Shared", "PiTempSensorApp.Reader.Shared\PiTempSensorApp.Reader.Shared.csproj", "{C8AA32A8-0819-4D75-98B1-2F23E95CFD40}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{9DC7A910-B41D-4AB1-BB0D-49EDD61408B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9DC7A910-B41D-4AB1-BB0D-49EDD61408B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9DC7A910-B41D-4AB1-BB0D-49EDD61408B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8AA32A8-0819-4D75-98B1-2F23E95CFD40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8AA32A8-0819-4D75-98B1-2F23E95CFD40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8AA32A8-0819-4D75-98B1-2F23E95CFD40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8AA32A8-0819-4D75-98B1-2F23E95CFD40}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

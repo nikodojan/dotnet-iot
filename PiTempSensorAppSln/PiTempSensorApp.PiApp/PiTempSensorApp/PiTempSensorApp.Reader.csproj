@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -8,15 +8,21 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Iot.Device.Bindings" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.1" />
-    <PackageReference Include="MongoDB.Driver" Version="2.18.0" />
   </ItemGroup>
 
 	<ItemGroup>
 		<None Update="appsettings.json">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\PiTempSensorApp.Reader.Shared\PiTempSensorApp.Reader.Shared.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<InternalsVisibleTo Include="PiTempSensorApp.Reader.Tests" />
 	</ItemGroup>
 
 </Project>

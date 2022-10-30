@@ -1,9 +1,9 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using PiTempSensorApp.Reader.Models;
-using PiTempSensorApp.Reader.Sensor;
-using PiTempSensorApp.Reader.Services;
+using PiTempSensorApp.Reader.Shared.DataServices;
+using PiTempSensorApp.Reader.Shared.Models;
+using PiTempSensorApp.Reader.Shared.Sensor;
 
 namespace PiTempSensorApp.Reader;
 
@@ -43,7 +43,7 @@ internal class Worker : IWorker
                 if (DataHasChanged(data))
                 {
                     SetOldValues(data);
-                    Console.WriteLine($"temp: {_oldTemperature} °C\r\nhum: {_oldHumidity} %");
+                    //Console.WriteLine($"temp: {_oldTemperature} °C\r\nhum: {_oldHumidity} %");
                     await SendData(data);
                 }
 

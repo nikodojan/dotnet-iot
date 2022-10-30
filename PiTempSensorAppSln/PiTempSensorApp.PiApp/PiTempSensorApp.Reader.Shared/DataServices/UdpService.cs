@@ -3,9 +3,9 @@ using System.Net.Sockets;
 using System.Text;
 using System.Text.Json;
 using Microsoft.Extensions.Configuration;
-using PiTempSensorApp.Reader.Models;
+using PiTempSensorApp.Reader.Shared.Models;
 
-namespace PiTempSensorApp.Reader.Services;
+namespace PiTempSensorApp.Reader.Shared.DataServices;
 
 internal class UdpService : IDataService, IDisposable
 {
@@ -14,7 +14,7 @@ internal class UdpService : IDataService, IDisposable
 
     public UdpService(IConfiguration config)
     {
-        int port = config.GetValue<int>("UdpPort");
+        var port = Convert.ToInt32(config.GetSection("UdpPort").Value);
         _udp = new UdpClient();
         _broadcastEndPoint = new IPEndPoint(IPAddress.Broadcast, port);
     }

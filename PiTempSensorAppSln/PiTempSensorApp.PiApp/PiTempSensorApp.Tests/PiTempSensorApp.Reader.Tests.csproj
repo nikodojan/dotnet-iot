@@ -21,4 +21,12 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Stubs\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PiTempSensorApp\PiTempSensorApp.Reader.csproj" />
+  </ItemGroup>
+
 </Project>
